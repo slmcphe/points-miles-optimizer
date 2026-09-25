@@ -4,6 +4,10 @@
 
 [**Try the Live Demo**](https://slmcphe-points-miles-optimizer-app-rdkdyw.streamlit.app/)
 
+## Application Preview
+
+![Flight Redemption Advisor](flight-redemption-advisor.png)
+
 ## Why I Built This
 
 Travel rewards can create a decision-paralysis problem.
