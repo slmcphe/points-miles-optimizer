@@ -1,147 +1,172 @@
 # Flight Redemption Advisor
 
-### Data-Driven Optimization of Reward Redemption Strategies and Valuation Models
+### A data-driven decision-support tool for optimizing points, miles, and cash when booking flights.
 
-**Flight Redemption Advisor** is an interactive Streamlit application designed to help travelers decide whether to **redeem credit card points/airline miles or pay cash** for a flight.
+[**Try the Live Demo**](https://slmcphe-points-miles-optimizer-app-rdkdyw.streamlit.app/)
 
-The tool calculates the **cents-per-point (CPP)** value of a potential redemption and compares it against estimated point valuations to provide a straightforward recommendation.
+## Why I Built This
 
-## Live Demo
+Travel rewards can create a decision-paralysis problem.
 
-**Try the app:**
-https://slmcphe-points-miles-optimizer-app-rdkdyw.streamlit.app/
+When booking a flight, travelers may need to compare cash prices, points or miles required, taxes and fees, airline credits, and the estimated value of their rewards. Doing these calculations manually across multiple programs can be time-consuming and make it difficult to determine whether a redemption is actually worthwhile.
 
----
+I built **Flight Redemption Advisor** to turn that process into a simple, data-driven decision.
 
-## The Problem
+## The Product
 
-Using points and miles effectively can be difficult because travelers must compare:
+The application allows travelers to enter their rewards balances and flight information, then calculates the potential value of each redemption in **cents per point (CPP)**.
 
-* Cash ticket prices
-* Points or miles required
-* Taxes and fees
-* Existing airline credits
-* Credit card point balances
-* Estimated point values
+The tool compares the calculated redemption value against an estimated rewards-program benchmark and provides an actionable recommendation:
 
-Manually calculating these factors can be time-consuming and can lead to decision paralysis when multiple redemption options are available.
+* **Use Points** when the redemption meets or exceeds the estimated value.
+* **Pay Cash** when the redemption falls below the estimated value.
 
-## The Solution
+The goal is to reduce manual calculations and help travelers make faster, more informed redemption decisions.
 
-Flight Redemption Advisor brings these calculations into one interactive tool.
+## How It Works
 
-Users enter their available points and miles, flight pricing, redemption costs, taxes/fees, and applicable credits. The application then:
-
-1. Calculates the effective cash price of the flight.
-2. Calculates the redemption value in cents per point.
-3. Compares the redemption value against an estimated benchmark.
-4. Indicates whether using points or paying cash provides the stronger value.
-5. Identifies the highest-value redemption option among the available choices.
-
-## Key Features
-
-### Points & Miles Balances
+### 1. Enter Rewards Balances
 
 Users can enter balances for:
 
 * Chase Ultimate Rewards
-* Amex Membership Rewards
+* American Express Membership Rewards
 * Capital One Miles
 * Delta SkyMiles
 * American Airlines AAdvantage Miles
 * United MileagePlus Miles
 * Spirit Free Spirit Miles
 
-### Flight Pricing
+### 2. Enter Flight Information
 
-Users can enter:
+Users provide:
 
 * Cash ticket price
-* Points/miles required
+* Points or miles required
 * Taxes and fees
-* Airline credits
+* Applicable airline credits
+* Potential transfer destination
 
-### CPP Analysis
+### 3. Calculate Redemption Value
 
-The application calculates:
+The application calculates the effective cost of the flight and converts the result into cents per point.
 
-**Cents Per Point (CPP) = Effective Flight Cost ÷ Points Required × 100**
+**CPP = Effective Flight Cost ÷ Points Required × 100**
 
-The calculated CPP is compared against an estimated value for each rewards program.
+### 4. Generate a Recommendation
 
-### Recommendation Engine
-
-The application provides an easy-to-understand recommendation:
-
-* **Use Points** when the calculated redemption value meets or exceeds the estimated benchmark.
-* **Pay Cash** when the calculated redemption value falls below the estimated benchmark.
-
----
+The calculated CPP is compared with an estimated program valuation to determine whether the redemption provides sufficient value.
 
 ## Example
 
-Suppose a Delta flight costs **$500 cash** or **40,000 SkyMiles + $6 in taxes and fees**.
+A traveler could compare a hypothetical:
 
-The application calculates the redemption value and compares it with the estimated Delta SkyMiles valuation.
+**$500 cash fare**
 
-The result can then be used to determine whether redeeming miles provides sufficient value relative to paying cash.
+versus:
 
----
+**40,000 Delta SkyMiles + taxes and fees**
+
+The application calculates the resulting CPP and determines whether the redemption meets the estimated value of the miles.
+
+This transforms a multi-step calculation into a simple decision.
+
+## Data and Methodology
+
+The project uses estimated points-and-miles valuations informed by publicly available rewards data, including **The Points Guy** and **Roame**.
+
+These valuations serve as benchmarks rather than guaranteed redemption values. Actual redemption value can vary based on:
+
+* Award availability
+* Route
+* Travel dates
+* Airline pricing
+* Transfer ratios
+* Taxes and fees
+* Redemption type
 
 ## Technology
 
-* **Python**
-* **Streamlit** — interactive web application
-* **Pandas** — data manipulation and calculations
-* **GitHub** — version control and project hosting
-* **Streamlit Community Cloud** — application deployment
+### Languages and Libraries
 
----
+* Python
+* Pandas
+* Streamlit
 
-## Data & Valuation Sources
+### Development and Deployment
 
-The project was informed by publicly available points-and-miles valuation data, including:
+* GitHub
+* Streamlit Community Cloud
 
-* **The Points Guy (TPG)** — points and miles valuations
-* **Roame** — rewards program valuation data
+## Project Architecture
 
-Valuations are used as benchmarks rather than guaranteed redemption values. Actual redemption value can vary depending on route, availability, airline pricing, transfer ratios, taxes, fees, and other factors.
+The current MVP uses a rule-based valuation and recommendation approach:
 
----
+**User Inputs → Effective Flight Cost → CPP Calculation → Benchmark Comparison → Recommendation**
 
-## Future Enhancements
+The application is designed as a foundation that can be expanded with additional data and machine-learning capabilities.
 
-Potential future versions could include:
+## Future Product Opportunities
 
-* Personalized redemption recommendations
-* Additional airlines and hotel programs
-* Transfer-partner optimization
-* Dynamic points valuations
-* Award availability integration
-* Historical redemption-value tracking
-* Machine-learning-based recommendation models
-* Automatic flight-price and award-price comparisons
-* User profiles for storing rewards balances
-* Visualization of redemption value across programs
+### Personalization
 
----
+Recommendations based on a user's individual points balances, travel preferences, and redemption goals.
+
+### Transfer Optimization
+
+Automatically identify the most efficient credit-card-to-airline transfer pathway.
+
+### Dynamic Valuations
+
+Incorporate changing market valuations rather than relying solely on static benchmarks.
+
+### Award Availability
+
+Connect redemption recommendations to real-time award availability.
+
+### Machine Learning
+
+Use historical redemption data to predict redemption value and improve personalized recommendations.
+
+### Automated Flight Comparison
+
+Compare cash fares and award prices across multiple airlines and programs automatically.
+
+## Product Impact
+
+The project is designed around three measurable outcomes:
+
+### Time Saved
+
+Reduce the time required to manually calculate and compare redemption options.
+
+### Less Manual Computation
+
+Automate repetitive CPP and value calculations.
+
+### Better-Informed Redemptions
+
+Give travelers a consistent framework for evaluating whether points or cash provides greater value.
 
 ## Project Context
 
-This project was developed as a passion project.
+Developed as a passion project (Points & Miles Enthusiast / Credit Card Power User).
 
-The project combines data analysis, valuation modeling, and product thinking to address a real-world decision-making problem in the travel rewards space.
+The project combines:
 
-### Project Goal
+* Data analysis
+* Quantitative valuation
+* Python development
+* Interactive application design
+* Product thinking
+* Decision-support modeling
 
-The broader goal is to demonstrate how data-driven tools can reduce the time and complexity involved in evaluating rewards redemption decisions.
+Rather than simply analyzing rewards data, the project applies that analysis to a real-world consumer decision.
 
----
-
-## Author
+## About the Author
 
 **Sophia McPherson**
 
 Data Science & Analytics | Product & AI
 
-GitHub: https://github.com/slmcphe
+[GitHub](https://github.com/slmcphe)
