@@ -99,5 +99,6 @@ transfer_to = transfer_map[transfer_option]
 # --------------------------------
 # CPP Calculations & Recommendation
 # --------------------------------
-CPP (Cents Per Point) Analysis
+if st.button("Calculate Recommendation"):
+    st.subheader("CPP (Cents Per Point) Analysis")
 No redemption options could be calculated. Please enter an eligible points balance and redemption cost.
