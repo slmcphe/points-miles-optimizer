@@ -1,74 +1,147 @@
-# ✈️ Flight Redemption Advisor
+# Flight Redemption Advisor
 
-A Streamlit web app that helps travelers decide whether to use airline points and miles or pay cash for a flight.
+### Data-Driven Optimization of Reward Redemption Strategies and Valuation Models
 
-## Overview
+**Flight Redemption Advisor** is an interactive Streamlit application designed to help travelers decide whether to **redeem credit card points/airline miles or pay cash** for a flight.
 
-Redeeming points and miles can involve comparing cash prices, award prices, taxes and fees, available balances, and the estimated value of different loyalty currencies.
+The tool calculates the **cents-per-point (CPP)** value of a potential redemption and compares it against estimated point valuations to provide a straightforward recommendation.
 
-This project provides a simple decision-support tool that calculates the value of a points redemption and compares it with a predefined estimated value for each rewards program.
+## Live Demo
 
-## Features
+**Try the app:**
+https://slmcphe-points-miles-optimizer-app-rdkdyw.streamlit.app/
 
-* Enter credit card points and airline mileage balances
-* Enter airline cash prices
-* Enter the number of miles required for an award flight
-* Account for taxes and fees when redeeming miles
-* Enter available airline credits
-* Compare redemption value against estimated points-and-miles valuations
-* Receive a recommendation to redeem points/miles or pay cash
+---
 
-## Rewards Programs
+## The Problem
 
-The calculator currently includes:
+Using points and miles effectively can be difficult because travelers must compare:
+
+* Cash ticket prices
+* Points or miles required
+* Taxes and fees
+* Existing airline credits
+* Credit card point balances
+* Estimated point values
+
+Manually calculating these factors can be time-consuming and can lead to decision paralysis when multiple redemption options are available.
+
+## The Solution
+
+Flight Redemption Advisor brings these calculations into one interactive tool.
+
+Users enter their available points and miles, flight pricing, redemption costs, taxes/fees, and applicable credits. The application then:
+
+1. Calculates the effective cash price of the flight.
+2. Calculates the redemption value in cents per point.
+3. Compares the redemption value against an estimated benchmark.
+4. Indicates whether using points or paying cash provides the stronger value.
+5. Identifies the highest-value redemption option among the available choices.
+
+## Key Features
+
+### Points & Miles Balances
+
+Users can enter balances for:
 
 * Chase Ultimate Rewards
-* American Express Membership Rewards
+* Amex Membership Rewards
 * Capital One Miles
 * Delta SkyMiles
-* American Airlines AAdvantage
-* United MileagePlus
+* American Airlines AAdvantage Miles
+* United MileagePlus Miles
 * Spirit Free Spirit Miles
+
+### Flight Pricing
+
+Users can enter:
+
+* Cash ticket price
+* Points/miles required
+* Taxes and fees
+* Airline credits
+
+### CPP Analysis
+
+The application calculates:
+
+**Cents Per Point (CPP) = Effective Flight Cost ÷ Points Required × 100**
+
+The calculated CPP is compared against an estimated value for each rewards program.
+
+### Recommendation Engine
+
+The application provides an easy-to-understand recommendation:
+
+* **Use Points** when the calculated redemption value meets or exceeds the estimated benchmark.
+* **Pay Cash** when the calculated redemption value falls below the estimated benchmark.
+
+---
+
+## Example
+
+Suppose a Delta flight costs **$500 cash** or **40,000 SkyMiles + $6 in taxes and fees**.
+
+The application calculates the redemption value and compares it with the estimated Delta SkyMiles valuation.
+
+The result can then be used to determine whether redeeming miles provides sufficient value relative to paying cash.
+
+---
 
 ## Technology
 
-* Python
-* Streamlit
-* Pandas
+* **Python**
+* **Streamlit** — interactive web application
+* **Pandas** — data manipulation and calculations
+* **GitHub** — version control and project hosting
+* **Streamlit Community Cloud** — application deployment
 
-## How to Run Locally
+---
 
-Clone the repository and navigate to the project directory:
+## Data & Valuation Sources
 
-```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
-cd points-miles-redemption-optimizer
-```
+The project was informed by publicly available points-and-miles valuation data, including:
 
-Install the required packages:
+* **The Points Guy (TPG)** — points and miles valuations
+* **Roame** — rewards program valuation data
 
-```bash
-pip install -r requirements.txt
-```
+Valuations are used as benchmarks rather than guaranteed redemption values. Actual redemption value can vary depending on route, availability, airline pricing, transfer ratios, taxes, fees, and other factors.
 
-Run the Streamlit application:
-
-```bash
-streamlit run app.py
-```
-
-The application will open in your browser at the local Streamlit address.
-
-## Example Testing
-
-One test scenario used a $500 Delta flight with 25,000 SkyMiles required and $11.20 in taxes and fees. The calculator determined that the redemption provided approximately 2.04¢ per SkyMile and recommended using points.
-
-A second scenario used a $300 Delta flight with 40,000 SkyMiles required and $11.20 in taxes and fees. The calculator determined that the redemption provided approximately 0.78¢ per SkyMile and recommended paying cash.
+---
 
 ## Future Enhancements
 
-Potential future improvements include personalized redemption recommendations, dynamic points valuations, additional airlines and loyalty programs, transfer-partner optimization, and machine-learning-based recommendations.
+Potential future versions could include:
+
+* Personalized redemption recommendations
+* Additional airlines and hotel programs
+* Transfer-partner optimization
+* Dynamic points valuations
+* Award availability integration
+* Historical redemption-value tracking
+* Machine-learning-based recommendation models
+* Automatic flight-price and award-price comparisons
+* User profiles for storing rewards balances
+* Visualization of redemption value across programs
+
+---
 
 ## Project Context
 
-Developed as part of the University of Michigan School of Information's SI 699 Big Data Analytics Mastery project.
+This project was developed as a passion project.
+
+The project combines data analysis, valuation modeling, and product thinking to address a real-world decision-making problem in the travel rewards space.
+
+### Project Goal
+
+The broader goal is to demonstrate how data-driven tools can reduce the time and complexity involved in evaluating rewards redemption decisions.
+
+---
+
+## Author
+
+**Sophia McPherson**
+
+Data Science & Analytics | Product & AI
+
+GitHub: https://github.com/slmcphe
