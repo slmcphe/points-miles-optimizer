@@ -95,10 +95,107 @@ transfer_map = {
 
 transfer_to = transfer_map[transfer_option]
 
-
 # --------------------------------
 # CPP Calculations & Recommendation
 # --------------------------------
 if st.button("Calculate Recommendation"):
     st.subheader("CPP (Cents Per Point) Analysis")
-No redemption options could be calculated. Please enter an eligible points balance and redemption cost.
+
+    total_cc_points = sum(cc_points.values())
+
+    effective_prices = {
+        program: max(cash_prices[program] - credits[program], 0)
+        for program in credits
+    }
+
+    recommendations = []
+
+    for program in effective_prices:
+        miles_available = airline_miles[program]
+        miles_required = points_needed[program]
+
+        # Cannot calculate a redemption without a redemption cost
+        if miles_required == 0:
+            continue
+
+        effective_price = effective_prices[program]
+        total_cost = effective_price + taxes_and_fees
+
+        cpp = round((total_cost / miles_required) * 100, 2)
+
+        baseline = cpp_estimates.get(program, 1.0)
+
+        # Determine whether the user can currently use this redemption
+        has_enough_miles = miles_available >= miles_required
+        transfer_selected = (
+            transfer_to == program and total_cc_points > 0
+        )
+
+        # Display the CPP calculation
+        st.write(
+            f"**{program}**: {cpp}¢/pt "
+            f"(est. value: {baseline}¢)"
+        )
+
+        # Determine status
+        if has_enough_miles:
+            if cpp >= baseline:
+                status = "Use Points"
+            else:
+                status = "Pay Cash"
+
+            st.write(f"→ {status}")
+
+            recommendations.append(
+                (program, cpp, baseline)
+            )
+
+        elif transfer_selected:
+            if cpp >= baseline:
+                status = "Use Points / Transfer Points"
+            else:
+                status = "Pay Cash"
+
+            st.write(f"→ {status}")
+
+            recommendations.append(
+                (f"Transfer to {program}", cpp, baseline)
+            )
+
+        elif miles_available > 0:
+            st.write(
+                "→ Insufficient miles for this redemption"
+            )
+
+        else:
+            st.write(
+                "→ No miles available — Pay Cash"
+            )
+
+    # --------------------------------
+    # Best Overall Option
+    # --------------------------------
+    if recommendations:
+        best_program, best_cpp, best_est = max(
+            recommendations,
+            key=lambda x: x[1]
+        )
+
+        if best_cpp >= best_est:
+            st.success(
+                f"Best Option: Use **{best_program}** "
+                f"({best_cpp}¢/pt ≥ {best_est}¢)"
+            )
+        else:
+            st.info(
+                "Best Option: **Pay with Cash** — "
+                "the available redemptions do not provide "
+                "better value than the benchmark."
+            )
+
+    else:
+        st.info(
+            "Best Option: **Pay with Cash** — "
+            "no eligible points or miles are currently "
+            "available for the redemption options entered."
+        )
