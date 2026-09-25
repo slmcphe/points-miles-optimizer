@@ -6,7 +6,7 @@
 
 ## Application Preview
 
-![Flight Redemption Advisor](flight-redemption-advisor.png)
+![Flight Redemption Advisor](Streamlit screenshot blank.png)
 
 ## Why I Built This
 
