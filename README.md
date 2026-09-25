@@ -6,7 +6,7 @@
 
 ## Application Preview
 
-![Flight Redemption Advisor](Streamlit screenshot blank.png)
+![Flight Redemption Advisor]("Streamlit screenshot blank.png")
 
 ## Why I Built This
 
